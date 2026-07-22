@@ -727,6 +727,20 @@ async function pushRecordToAppsScript(record, syncConfig) {
       action: "upsert",
       sheetName: syncConfig.sheetName || "Presensi_Bawaslu_Riau",
       driveFolderId: syncConfig.driveFolderId || "",
+      spreadsheetId: syncConfig.spreadsheetId || "",
+      // Top-level properties for direct Google Apps Script parsing
+      id: record.id,
+      waktuPresensi: record.waktuPresensi,
+      namaKegiatan: record.namaKegiatan,
+      kabKota: record.kabKota,
+      nama: record.nama,
+      jabatan: record.jabatan,
+      noHp: record.noHp || "-",
+      statusKehadiran: record.statusKehadiran || "HADIR",
+      statusVerifikasi: record.statusVerifikasi || "TERVERIFIKASI",
+      fotoBuktiUrl: record.fotoBuktiUrl || "",
+      catatan: record.catatan || "",
+      // Nested data object for backward compatibility
       data: {
         id: record.id,
         waktuPresensi: record.waktuPresensi,
@@ -734,10 +748,10 @@ async function pushRecordToAppsScript(record, syncConfig) {
         kabKota: record.kabKota,
         nama: record.nama,
         jabatan: record.jabatan,
-        noHp: record.noHp,
-        statusKehadiran: record.statusKehadiran,
-        statusVerifikasi: record.statusVerifikasi,
-        fotoBuktiUrl: record.fotoBuktiUrl,
+        noHp: record.noHp || "-",
+        statusKehadiran: record.statusKehadiran || "HADIR",
+        statusVerifikasi: record.statusVerifikasi || "TERVERIFIKASI",
+        fotoBuktiUrl: record.fotoBuktiUrl || "",
         catatan: record.catatan || ""
       }
     };
