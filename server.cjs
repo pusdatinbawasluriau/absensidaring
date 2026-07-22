@@ -28,190 +28,6 @@ var import_fs = __toESM(require("fs"), 1);
 var import_vite = require("vite");
 
 // src/data/mockData.ts
-var INITIAL_ACTIVITIES = [
-  {
-    id: "ACT-2026-001",
-    namaKegiatan: "Rakor Pengawasan Logistik Pemilukada Daring BAWASLU Riau 2026",
-    tanggal: "2026-07-21",
-    jamMulai: "08:30",
-    jamSelesai: "12:00",
-    penyelenggara: "Divisi Pencegahan, Parmas, dan Humas Bawaslu Riau",
-    status: "Aktif",
-    deskripsi: "Rapat koordinasi virtual kesiapan pengawasan logistik seluruh Bawaslu Kab/Kota se-Provinsi Riau.",
-    totalPeserta: 28
-  },
-  {
-    id: "ACT-2026-002",
-    namaKegiatan: "Webinar Pembekalan Netralitas ASN & TNI/POLRI Dalam Pemilu Daring",
-    tanggal: "2026-07-22",
-    jamMulai: "09:00",
-    jamSelesai: "15:30",
-    penyelenggara: "Divisi Penanganan Pelanggaran Bawaslu Riau",
-    status: "Aktif",
-    deskripsi: "Sosialisasi & pembekalan teknis penanganan sengketa dan netralitas aparatur negara.",
-    totalPeserta: 15
-  },
-  {
-    id: "ACT-2026-003",
-    namaKegiatan: "Bimtek Tata Kelola Keuangan & Pertanggungjawaban Sekretariat",
-    tanggal: "2026-07-20",
-    jamMulai: "09:00",
-    jamSelesai: "16:00",
-    penyelenggara: "Kepala Sekretariat Bawaslu Provinsi Riau",
-    status: "Selesai",
-    deskripsi: "Bimbingan teknis akuntabilitas anggaran & SPJ keuangan kegiatan daring.",
-    totalPeserta: 42
-  }
-];
-var INITIAL_ATTENDANCE = [
-  {
-    id: "PRES-001",
-    kegiatanId: "ACT-2026-001",
-    namaKegiatan: "Rakor Pengawasan Logistik Pemilukada Daring BAWASLU Riau 2026",
-    kabKota: "Kota Pekanbaru",
-    nama: "ADITYA AL JAMIL",
-    nipNik: "",
-    jabatan: "Ketua Bawaslu",
-    noHp: "",
-    waktuPresensi: "2026-07-21T08:32:15+07:00",
-    statusKehadiran: "Hadir",
-    statusVerifikasi: "Disetujui",
-    fotoBuktiUrl: "",
-    lokasiGps: {
-      latitude: 0.5071,
-      longitude: 101.4478,
-      alamatSingkat: "Pekanbaru, Riau"
-    },
-    catatan: "",
-    syncedToGoogleSheet: true
-  },
-  {
-    id: "PRES-002",
-    kegiatanId: "ACT-2026-001",
-    namaKegiatan: "Rakor Pengawasan Logistik Pemilukada Daring BAWASLU Riau 2026",
-    kabKota: "Kabupaten Kampar",
-    nama: "KHAIDIR",
-    nipNik: "",
-    jabatan: "Anggota Bawaslu",
-    noHp: "",
-    waktuPresensi: "2026-07-21T08:35:40+07:00",
-    statusKehadiran: "Hadir",
-    statusVerifikasi: "Disetujui",
-    fotoBuktiUrl: "",
-    lokasiGps: {
-      latitude: 0.3421,
-      longitude: 101.0289,
-      alamatSingkat: "Bangkinang, Kampar"
-    },
-    catatan: "",
-    syncedToGoogleSheet: true
-  },
-  {
-    id: "PRES-003",
-    kegiatanId: "ACT-2026-001",
-    namaKegiatan: "Rakor Pengawasan Logistik Pemilukada Daring BAWASLU Riau 2026",
-    kabKota: "Kabupaten Bengkalis",
-    nama: "M.SARBINI",
-    nipNik: "",
-    jabatan: "Kepala Sekretariat",
-    noHp: "",
-    waktuPresensi: "2026-07-21T08:41:02+07:00",
-    statusKehadiran: "Hadir",
-    statusVerifikasi: "Disetujui",
-    fotoBuktiUrl: "",
-    lokasiGps: {
-      latitude: 1.4812,
-      longitude: 102.1321,
-      alamatSingkat: "Bengkalis, Riau"
-    },
-    catatan: "",
-    syncedToGoogleSheet: true
-  },
-  {
-    id: "PRES-004",
-    kegiatanId: "ACT-2026-001",
-    namaKegiatan: "Rakor Pengawasan Logistik Pemilukada Daring BAWASLU Riau 2026",
-    kabKota: "Kota Dumai",
-    nama: "IDRIS SARDI",
-    nipNik: "",
-    jabatan: "Koordinator Sekretariat",
-    noHp: "",
-    waktuPresensi: "2026-07-21T08:44:50+07:00",
-    statusKehadiran: "Hadir",
-    statusVerifikasi: "Disetujui",
-    fotoBuktiUrl: "",
-    lokasiGps: {
-      latitude: 1.6811,
-      longitude: 101.4491,
-      alamatSingkat: "Dumai, Riau"
-    },
-    catatan: "",
-    syncedToGoogleSheet: false
-  },
-  {
-    id: "PRES-005",
-    kegiatanId: "ACT-2026-001",
-    namaKegiatan: "Rakor Pengawasan Logistik Pemilukada Daring BAWASLU Riau 2026",
-    kabKota: "Kabupaten Indragiri Hilir",
-    nama: "NURILLAH",
-    nipNik: "",
-    jabatan: "Staf Teknis",
-    noHp: "",
-    waktuPresensi: "2026-07-21T08:50:11+07:00",
-    statusKehadiran: "Hadir",
-    statusVerifikasi: "Disetujui",
-    fotoBuktiUrl: "",
-    lokasiGps: {
-      latitude: -0.3201,
-      longitude: 103.1502,
-      alamatSingkat: "Tembilahan, Inhil"
-    },
-    catatan: "",
-    syncedToGoogleSheet: false
-  },
-  {
-    id: "PRES-006",
-    kegiatanId: "ACT-2026-001",
-    namaKegiatan: "Rakor Pengawasan Logistik Pemilukada Daring BAWASLU Riau 2026",
-    kabKota: "Kabupaten Siak",
-    nama: "SUTRISNA",
-    nipNik: "",
-    jabatan: "Anggota Bawaslu",
-    noHp: "",
-    waktuPresensi: "2026-07-21T08:52:30+07:00",
-    statusKehadiran: "Hadir",
-    statusVerifikasi: "Disetujui",
-    fotoBuktiUrl: "",
-    lokasiGps: {
-      latitude: 0.7933,
-      longitude: 102.0492,
-      alamatSingkat: "Siak Sri Indrapura"
-    },
-    catatan: "",
-    syncedToGoogleSheet: true
-  },
-  {
-    id: "PRES-007",
-    kegiatanId: "ACT-2026-001",
-    namaKegiatan: "Rakor Pengawasan Logistik Pemilukada Daring BAWASLU Riau 2026",
-    kabKota: "Kabupaten Pelalawan",
-    nama: "ELVINA ARMISTA",
-    nipNik: "",
-    jabatan: "Pegawai",
-    noHp: "",
-    waktuPresensi: "2026-07-21T09:05:00+07:00",
-    statusKehadiran: "Hadir",
-    statusVerifikasi: "Disetujui",
-    fotoBuktiUrl: "",
-    lokasiGps: {
-      latitude: 0.3812,
-      longitude: 101.8812,
-      alamatSingkat: "Pangkalan Kerinci"
-    },
-    catatan: "",
-    syncedToGoogleSheet: true
-  }
-];
 var INITIAL_SYNC_CONFIG = {
   spreadsheetId: "",
   sheetName: "Presensi_Bawaslu_Riau",
@@ -640,12 +456,8 @@ var PORT = 3e3;
 var DATA_FILE = import_path.default.join(process.cwd(), "data_store.json");
 var DEFAULT_SERVER_DATA = {
   syncConfig: INITIAL_SYNC_CONFIG,
-  attendanceRecords: INITIAL_ATTENDANCE.map((item) => ({
-    ...item,
-    statusVerifikasi: "Disetujui",
-    syncedToGoogleSheet: true
-  })),
-  activities: INITIAL_ACTIVITIES,
+  attendanceRecords: [],
+  activities: [],
   appSettings: {
     appTitle: "Absensi Online Kegiatan Daring",
     appSubTitle: "BAWASLU RIAU",
@@ -655,28 +467,34 @@ var DEFAULT_SERVER_DATA = {
     loginSubTitle: "Masukkan kata sandi admin untuk mengakses Dashboard, Laporan Absensi, dan Pengaturan System."
   },
   pesertaData: DATA_PESERTA_BY_KABKOTA,
-  syncLogs: [
-    {
-      id: "LOG-001",
-      timestamp: (/* @__PURE__ */ new Date()).toISOString(),
-      tipe: "TEST",
-      pesan: "Server database terhubung dan siap melakukan sinkronisasi otomatis.",
-      status: "Berhasil"
-    }
-  ]
+  syncLogs: []
 };
 function readServerData() {
   try {
     if (import_fs.default.existsSync(DATA_FILE)) {
       const raw = import_fs.default.readFileSync(DATA_FILE, "utf-8");
       const parsed = JSON.parse(raw);
-      return {
+      const cleanedAttendance = (parsed.attendanceRecords || []).filter(
+        (r) => !["PRES-001", "PRES-002", "PRES-003", "PRES-004", "PRES-005", "PRES-006", "PRES-007"].includes(r.id)
+      );
+      const cleanedActivities = (parsed.activities || []).filter(
+        (a) => !["ACT-2026-001", "ACT-2026-002", "ACT-2026-003"].includes(a.id)
+      );
+      const cleanedSyncLogs = (parsed.syncLogs || []).filter(
+        (l) => l.id !== "LOG-001"
+      );
+      const result = {
         ...DEFAULT_SERVER_DATA,
         ...parsed,
+        attendanceRecords: cleanedAttendance,
+        activities: cleanedActivities,
+        syncLogs: cleanedSyncLogs,
         syncConfig: { ...DEFAULT_SERVER_DATA.syncConfig, ...parsed.syncConfig || {} },
         appSettings: { ...DEFAULT_SERVER_DATA.appSettings, ...parsed.appSettings || {} },
         pesertaData: { ...DEFAULT_SERVER_DATA.pesertaData, ...parsed.pesertaData || {} }
       };
+      saveServerData(result);
+      return result;
     }
   } catch (e) {
     console.error("Error reading server data file:", e);
@@ -777,9 +595,56 @@ async function pushRecordToAppsScript(record, syncConfig) {
     return { success: false, message: err?.message || String(err) };
   }
 }
+async function pushActivityToAppsScript(activity, syncConfig) {
+  if (!syncConfig.appsScriptUrl || !syncConfig.appsScriptUrl.trim()) return;
+  try {
+    const scriptUrl = normalizeAppsScriptUrl(syncConfig.appsScriptUrl);
+    const payload = {
+      type: "kegiatan",
+      sheetName: (syncConfig.sheetName || "Presensi_Bawaslu_Riau") + "_Kegiatan",
+      data: {
+        id: activity.id,
+        namaKegiatan: activity.namaKegiatan,
+        tanggal: activity.tanggal,
+        jamMulai: activity.jamMulai,
+        jamSelesai: activity.jamSelesai,
+        penyelenggara: activity.penyelenggara,
+        status: activity.status,
+        deskripsi: activity.deskripsi || ""
+      }
+    };
+    await safeJsonFetch(scriptUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      redirect: "follow"
+    });
+  } catch (err) {
+    console.error("Error pushing activity to Apps Script:", err);
+  }
+}
+async function deleteActivityFromAppsScript(id, syncConfig) {
+  if (!syncConfig.appsScriptUrl || !syncConfig.appsScriptUrl.trim()) return;
+  try {
+    const scriptUrl = normalizeAppsScriptUrl(syncConfig.appsScriptUrl);
+    await safeJsonFetch(scriptUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        type: "kegiatan",
+        action: "delete",
+        sheetName: (syncConfig.sheetName || "Presensi_Bawaslu_Riau") + "_Kegiatan",
+        id
+      }),
+      redirect: "follow"
+    });
+  } catch (err) {
+    console.error("Error deleting activity from Apps Script:", err);
+  }
+}
 async function fetchRecordsFromAppsScript(syncConfig) {
   if (!syncConfig.appsScriptUrl || !syncConfig.appsScriptUrl.trim()) {
-    return { success: false, message: "URL Apps Script belum diisi", data: [] };
+    return { success: false, message: "URL Apps Script belum diisi", data: [], activities: [] };
   }
   try {
     const scriptUrl = normalizeAppsScriptUrl(syncConfig.appsScriptUrl);
@@ -788,13 +653,20 @@ async function fetchRecordsFromAppsScript(syncConfig) {
       url.searchParams.set("sheetName", syncConfig.sheetName);
     }
     const json = await safeJsonFetch(url.toString(), { redirect: "follow" });
-    if (json && json.status === "success" && Array.isArray(json.data)) {
-      return { success: true, data: json.data, message: "Berhasil mengambil data dari Google Sheets" };
+    if (json && json.status === "success") {
+      const attendance = Array.isArray(json.data) ? json.data : [];
+      const activities = Array.isArray(json.activities) ? json.activities : [];
+      return {
+        success: true,
+        data: attendance,
+        activities,
+        message: "Berhasil mengambil data dari Google Sheets"
+      };
     } else {
-      return { success: false, message: json?.message || "Format respon tidak valid", data: [] };
+      return { success: false, message: json?.message || "Format respon tidak valid", data: [], activities: [] };
     }
   } catch (err) {
-    return { success: false, message: err?.message || String(err), data: [] };
+    return { success: false, message: err?.message || String(err), data: [], activities: [] };
   }
 }
 async function startServer() {
@@ -814,19 +686,27 @@ async function startServer() {
     saveServerData(data);
     if (data.syncConfig.appsScriptUrl && data.syncConfig.appsScriptUrl.trim()) {
       const fetchRes = await fetchRecordsFromAppsScript(data.syncConfig);
-      if (fetchRes.success && fetchRes.data) {
-        const recordMap = /* @__PURE__ */ new Map();
-        data.attendanceRecords.forEach((r) => recordMap.set(r.id, r));
-        fetchRes.data.forEach(
-          (r) => recordMap.set(r.id, { ...recordMap.get(r.id), ...r, syncedToGoogleSheet: true })
-        );
-        data.attendanceRecords = Array.from(recordMap.values());
+      if (fetchRes.success) {
+        if (fetchRes.data) {
+          const recordMap = /* @__PURE__ */ new Map();
+          data.attendanceRecords.forEach((r) => recordMap.set(r.id, r));
+          fetchRes.data.forEach(
+            (r) => recordMap.set(r.id, { ...recordMap.get(r.id), ...r, syncedToGoogleSheet: true })
+          );
+          data.attendanceRecords = Array.from(recordMap.values());
+        }
+        if (fetchRes.activities && fetchRes.activities.length > 0) {
+          const actMap = /* @__PURE__ */ new Map();
+          data.activities.forEach((a) => actMap.set(a.id, a));
+          fetchRes.activities.forEach((a) => actMap.set(a.id, { ...actMap.get(a.id), ...a }));
+          data.activities = Array.from(actMap.values());
+        }
         data.syncConfig.lastSyncedAt = (/* @__PURE__ */ new Date()).toISOString();
         data.syncConfig.statusKoneksi = "Terhubung";
         saveServerData(data);
       }
     }
-    res.json({ status: "ok", data: data.syncConfig, fullData: data.attendanceRecords });
+    res.json({ status: "ok", data: data.syncConfig, fullData: data.attendanceRecords, activities: data.activities });
   });
   app.get("/api/attendance", (req, res) => {
     const data = readServerData();
@@ -880,31 +760,52 @@ async function startServer() {
   app.post("/api/fetch-google-sheets", async (req, res) => {
     const data = readServerData();
     const result = await fetchRecordsFromAppsScript(data.syncConfig);
-    if (result.success && result.data) {
-      const recordMap = /* @__PURE__ */ new Map();
-      data.attendanceRecords.forEach((r) => recordMap.set(r.id, r));
-      result.data.forEach((r) => recordMap.set(r.id, { ...recordMap.get(r.id), ...r, syncedToGoogleSheet: true }));
-      data.attendanceRecords = Array.from(recordMap.values());
+    if (result.success) {
+      if (result.data) {
+        const recordMap = /* @__PURE__ */ new Map();
+        data.attendanceRecords.forEach((r) => recordMap.set(r.id, r));
+        result.data.forEach((r) => recordMap.set(r.id, { ...recordMap.get(r.id), ...r, syncedToGoogleSheet: true }));
+        data.attendanceRecords = Array.from(recordMap.values());
+      }
+      if (result.activities && result.activities.length > 0) {
+        const actMap = /* @__PURE__ */ new Map();
+        data.activities.forEach((a) => actMap.set(a.id, a));
+        result.activities.forEach((a) => actMap.set(a.id, { ...actMap.get(a.id), ...a }));
+        data.activities = Array.from(actMap.values());
+      }
       data.syncConfig.lastSyncedAt = (/* @__PURE__ */ new Date()).toISOString();
       data.syncConfig.statusKoneksi = "Terhubung";
       saveServerData(data);
       res.json({
         status: "ok",
         data: data.attendanceRecords,
-        message: `Berhasil menyinkronkan ${result.data.length} record dari Google Sheets.`
+        activities: data.activities,
+        message: `Berhasil menyinkronkan ${result.data ? result.data.length : 0} presensi & ${result.activities ? result.activities.length : 0} kegiatan dari Google Sheets.`
       });
     } else {
-      res.json({ status: "error", message: result.message, data: data.attendanceRecords });
+      res.json({ status: "error", message: result.message, data: data.attendanceRecords, activities: data.activities });
     }
   });
   app.get("/api/activities", (req, res) => {
     const data = readServerData();
     res.json({ status: "ok", data: data.activities });
   });
-  app.post("/api/activities", (req, res) => {
+  app.post("/api/activities", async (req, res) => {
     const data = readServerData();
-    data.activities = req.body;
+    const oldActivities = data.activities || [];
+    const newActivities = req.body || [];
+    const newIds = new Set(newActivities.map((a) => a.id));
+    const deletedActivities = oldActivities.filter((a) => !newIds.has(a.id));
+    data.activities = newActivities;
     saveServerData(data);
+    if (data.syncConfig.appsScriptUrl && data.syncConfig.appsScriptUrl.trim()) {
+      for (const act of newActivities) {
+        await pushActivityToAppsScript(act, data.syncConfig);
+      }
+      for (const delAct of deletedActivities) {
+        await deleteActivityFromAppsScript(delAct.id, data.syncConfig);
+      }
+    }
     res.json({ status: "ok", data: data.activities });
   });
   app.get("/api/app-settings", (req, res) => {
@@ -934,13 +835,21 @@ async function startServer() {
         return;
       }
       const fetchRes = await fetchRecordsFromAppsScript(data.syncConfig);
-      if (fetchRes.success && fetchRes.data) {
-        const recordMap = /* @__PURE__ */ new Map();
-        data.attendanceRecords.forEach((r) => recordMap.set(r.id, r));
-        fetchRes.data.forEach(
-          (r) => recordMap.set(r.id, { ...recordMap.get(r.id), ...r, syncedToGoogleSheet: true })
-        );
-        data.attendanceRecords = Array.from(recordMap.values());
+      if (fetchRes.success) {
+        if (fetchRes.data) {
+          const recordMap = /* @__PURE__ */ new Map();
+          data.attendanceRecords.forEach((r) => recordMap.set(r.id, r));
+          fetchRes.data.forEach(
+            (r) => recordMap.set(r.id, { ...recordMap.get(r.id), ...r, syncedToGoogleSheet: true })
+          );
+          data.attendanceRecords = Array.from(recordMap.values());
+        }
+        if (fetchRes.activities && fetchRes.activities.length > 0) {
+          const actMap = /* @__PURE__ */ new Map();
+          data.activities.forEach((a) => actMap.set(a.id, a));
+          fetchRes.activities.forEach((a) => actMap.set(a.id, { ...actMap.get(a.id), ...a }));
+          data.activities = Array.from(actMap.values());
+        }
       }
       for (let i = 0; i < data.attendanceRecords.length; i++) {
         const rec = data.attendanceRecords[i];
