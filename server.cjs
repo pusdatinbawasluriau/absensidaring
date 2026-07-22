@@ -794,11 +794,25 @@ async function startServer() {
     const data = readServerData();
     res.json({ status: "ok", data: data.syncConfig });
   });
-  app.post("/api/sync-config", (req, res) => {
+  app.post("/api/sync-config", async (req, res) => {
     const data = readServerData();
     data.syncConfig = { ...data.syncConfig, ...req.body };
     saveServerData(data);
-    res.json({ status: "ok", data: data.syncConfig });
+    if (data.syncConfig.appsScriptUrl && data.syncConfig.appsScriptUrl.trim()) {
+      const fetchRes = await fetchRecordsFromAppsScript(data.syncConfig);
+      if (fetchRes.success && fetchRes.data) {
+        const recordMap = /* @__PURE__ */ new Map();
+        data.attendanceRecords.forEach((r) => recordMap.set(r.id, r));
+        fetchRes.data.forEach(
+          (r) => recordMap.set(r.id, { ...recordMap.get(r.id), ...r, syncedToGoogleSheet: true })
+        );
+        data.attendanceRecords = Array.from(recordMap.values());
+        data.syncConfig.lastSyncedAt = (/* @__PURE__ */ new Date()).toISOString();
+        data.syncConfig.statusKoneksi = "Terhubung";
+        saveServerData(data);
+      }
+    }
+    res.json({ status: "ok", data: data.syncConfig, fullData: data.attendanceRecords });
   });
   app.get("/api/attendance", (req, res) => {
     const data = readServerData();
@@ -947,6 +961,27 @@ async function startServer() {
   }
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server Absensi BAWASLU running on http://0.0.0.0:${PORT}`);
+    setTimeout(async () => {
+      try {
+        const data = readServerData();
+        if (data.syncConfig.appsScriptUrl && data.syncConfig.appsScriptUrl.trim()) {
+          const fetchRes = await fetchRecordsFromAppsScript(data.syncConfig);
+          if (fetchRes.success && fetchRes.data) {
+            const recordMap = /* @__PURE__ */ new Map();
+            data.attendanceRecords.forEach((r) => recordMap.set(r.id, r));
+            fetchRes.data.forEach(
+              (r) => recordMap.set(r.id, { ...recordMap.get(r.id), ...r, syncedToGoogleSheet: true })
+            );
+            data.attendanceRecords = Array.from(recordMap.values());
+            data.syncConfig.lastSyncedAt = (/* @__PURE__ */ new Date()).toISOString();
+            data.syncConfig.statusKoneksi = "Terhubung";
+            saveServerData(data);
+          }
+        }
+      } catch (e) {
+        console.error("Boot sync error:", e);
+      }
+    }, 1e3);
   });
 }
 startServer();
