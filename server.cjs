@@ -213,13 +213,13 @@ var INITIAL_ATTENDANCE = [
   }
 ];
 var INITIAL_SYNC_CONFIG = {
-  spreadsheetId: "1BawasluRiau_2026_PresensiDaringSheetID",
+  spreadsheetId: "",
   sheetName: "Presensi_Bawaslu_Riau",
-  driveFolderId: "1BawasluFolder_BuktiFotoPresensi",
-  appsScriptUrl: "https://script.google.com/macros/s/AKfycbx_BawasluRiau_Presensi_App/exec",
+  driveFolderId: "",
+  appsScriptUrl: "",
   autoSync: true,
-  lastSyncedAt: "2026-07-21T19:00:00+07:00",
-  statusKoneksi: "Terhubung"
+  lastSyncedAt: "",
+  statusKoneksi: "Belum Terhubung"
 };
 
 // src/data/pesertaData.ts
