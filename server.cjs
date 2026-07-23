@@ -29,13 +29,13 @@ var import_vite = require("vite");
 
 // src/data/mockData.ts
 var INITIAL_SYNC_CONFIG = {
-  spreadsheetId: "",
+  spreadsheetId: "1pZDUVoCw3OjBp3auva5jYzVLx9zhelLgzkHUTLgjbYY",
   sheetName: "Presensi_Bawaslu_Riau",
-  driveFolderId: "",
-  appsScriptUrl: "",
+  driveFolderId: "17VwcU5coQacg1uS5alIrmDKsiKpOr-vy",
+  appsScriptUrl: "https://script.google.com/macros/s/AKfycbwDC1vrQBm39Hxk_nUoKJSJlvAos-_JnK0wpge4R-2pRa0iuG116386xEhbJk6N-MeCkA/exec",
   autoSync: true,
-  lastSyncedAt: "",
-  statusKoneksi: "Belum Terhubung"
+  lastSyncedAt: (/* @__PURE__ */ new Date()).toISOString(),
+  statusKoneksi: "Terhubung"
 };
 
 // src/data/pesertaData.ts
